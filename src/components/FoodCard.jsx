@@ -1,10 +1,31 @@
+import axios from "axios";
 import React from "react";
+import toast from "react-hot-toast";
 import { AiFillStar } from "react-icons/ai";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/CartSlices";
+import { useDispatch, useSelector } from "react-redux";
+import { getCart } from "../helper";
+import { setCart } from "../redux/slices/CartSlice";
 
 const FoodCard = ({ id, name, price, desc, img, rating, handleToast }) => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+
+  const addToCart = async ({ id, name, img, price, rating, quantity }) => {
+    const res = await axios.post(
+      `http://localhost:3000/api/add-to-cart/${user._id}`,
+      {
+        id,
+        image: img,
+        name,
+        price,
+        rating,
+        quantity,
+      }
+    );
+    const data = await res.data;
+    toast.success(data.message);
+    getCart(user).then((data) => dispatch(setCart(data.cartItems)));
+  };
 
   return (
     <div className="font-bold w-[250px] bg-white p-5 flex flex-col rounded-lg gap-2">
@@ -15,7 +36,7 @@ const FoodCard = ({ id, name, price, desc, img, rating, handleToast }) => {
       />
       <div className="text-sm flex justify-between">
         <h2>{name}</h2>
-        <span className="text-blue-500 ">₹{price}</span>
+        <span className="text-green-500 ">₹{price}</span>
       </div>
       <p className="text-sm font-normal">{desc.slice(0, 50)}...</p>
       <div className="flex justify-between ">
@@ -24,12 +45,11 @@ const FoodCard = ({ id, name, price, desc, img, rating, handleToast }) => {
         </span>
         <button
           onClick={() => {
-            dispatch(
-              addToCart({ id, name, price, rating, price, img, qty: 1 })
-            );
-            handleToast(name);
+            !user
+              ? toast.error("Please login to add to cart")
+              : addToCart({ id, name, img, price, rating, quantity: 1 });
           }}
-          className="p-1 text-white bg-blue-500 hover:bg-blue-600 rounded-lg text-sm"
+          className="p-1 text-white bg-green-500 hover:bg-green-600 rounded-lg text-sm"
         >
           Add to cart
         </button>

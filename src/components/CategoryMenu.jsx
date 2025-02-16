@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FoodData from "../data/FoodData";
 import { useDispatch, useSelector } from "react-redux";
-import { setCategory } from "../redux/CategorySlice";
+import { setCategory } from "../redux/slices/CategorySlice";
 
 const CategoryMenu = () => {
   const [categories, setCategories] = useState([]);
@@ -11,7 +11,7 @@ const CategoryMenu = () => {
       ...new Set(FoodData.map((food) => food.category)),
     ];
     setCategories(uniqueCategories);
-    // console.log(uniqueCategories);
+    console.log(uniqueCategories);
   };
 
   useEffect(() => {
@@ -27,8 +27,8 @@ const CategoryMenu = () => {
       <div className="my-5 flex gap-3 overflow-x-scroll scroll-smooth lg:overflow-x-hidden">
         <button
           onClick={() => dispatch(setCategory("All"))}
-          className={`px-3 py-2 bg-gray-200 font-bold rounded-lg hover:bg-blue-500 hover:text-white ${
-            selectedCategory === "All" && "bg-blue-500 text-blue-500"
+          className={`px-3 py-2 bg-gray-200 font-bold rounded-lg hover:bg-green-500 hover:text-white ${
+            selectedCategory === "All" && "bg-green-500 text-white"
           }`}
         >
           All
@@ -38,8 +38,8 @@ const CategoryMenu = () => {
             <button
               onClick={() => dispatch(setCategory(category))}
               key={index}
-              className={`px-3 py-2 bg-gray-200 font-bold rounded-lg hover:bg-blue-500 hover:text-white ${
-                selectedCategory === category && "bg-blue-500 text-blue-500"
+              className={`px-3 py-2 bg-gray-200 font-bold rounded-lg hover:bg-green-500 hover:text-white ${
+                selectedCategory === category && "bg-green-500 text-white"
               } `}
             >
               {category}

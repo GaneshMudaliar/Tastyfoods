@@ -1,15 +1,15 @@
-import {configureStore} from "@reduxjs/toolkit";
-import CartSlices from "./CartSlices";
-import CategorySlice from "./CategorySlice";
-import SearchSlice from "./SearchSlice";
-
+import { configureStore } from "@reduxjs/toolkit";
+import CartSlice from "./slices/CartSlice";
+import CategorySlice from "./slices/CategorySlice";
+import SearchSlice from "./slices/SearchSlice";
+import AuthSlice from "./slices/AuthSlice";
 
 const Store = configureStore({
- reducer : {
-  cart: CartSlices,
+  reducer: {
+    cart: CartSlice,
     category: CategorySlice,
     search: SearchSlice,
- }
+    auth: AuthSlice,
+  },
 });
-
 export default Store;
