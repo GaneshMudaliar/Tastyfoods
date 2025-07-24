@@ -23,11 +23,6 @@ A full-stack food ordering application built with **React** for the frontend, **
 
 ---
 
-## 📸 Screenshots
-
-> Add screenshots here (e.g. home page, menu, cart, checkout)
-
----
 
 ## 🧑‍💻 Installation & Setup
 
