@@ -1,8 +1,43 @@
-# React + Vite
+# 🍔 Food Ordering App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack food ordering application built with **React** for the frontend, **Tailwind CSS** for styling, and **Stripe** for secure payments. Users can browse menus, add items to a cart, and checkout with Stripe.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
+
+- 🧾 View restaurant menus and item details
+- 🛒 Add/remove items from cart
+- 💳 Stripe integration for secure payment
+- 🔍 Responsive UI with Tailwind CSS
+- ⚛️ Built with modern React (Hooks, Router)
+- 🔐 Secure checkout flow
+
+---
+
+## 🛠️ Tech Stack
+
+| Frontend   | Styling       | Payments   |
+|------------|---------------|------------|
+| React      | Tailwind CSS  | Stripe API |
+
+---
+
+## 📸 Screenshots
+
+> Add screenshots here (e.g. home page, menu, cart, checkout)
+
+---
+
+## 🧑‍💻 Installation & Setup
+
+### Prerequisites
+
+- Node.js (>= 16)
+- Stripe account & API keys
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/yourusername/food-ordering-app.git
+cd food-ordering-app
